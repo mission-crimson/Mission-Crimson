@@ -139,25 +139,24 @@ RA.Render = (function () {
     drawOverlays(s, now, (P.x - camX) * Z, (P.y - camY) * Z * TILT - 20 * Z);
   }
 
+  const baseImg = new Image();
+  baseImg.src = 'assets/base.png';
+  const BASE_W = 300;
+
   function drawBase(s, now) {
     const b = s.world.base;
     ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 2; ctx.setLineDash([10, 8]);
     circle(b.x, b.y, C.BASE_RADIUS); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = '#2a3f6b';
-    for (let i = -1; i <= 1; i += 2) {
-      ctx.fillRect(b.x + i * 70 - 18, b.y - 60, 36, 22);
-      ctx.strokeStyle = '#8fb0e8'; ctx.lineWidth = 1; ctx.strokeRect(b.x + i * 70 - 18, b.y - 60, 36, 22);
+    if (baseImg.complete && baseImg.naturalWidth) {
+      const w = BASE_W, h = w * baseImg.naturalHeight / baseImg.naturalWidth;
+      ctx.save();
+      upright(b.x, b.y + 14);
+      ctx.drawImage(baseImg, -w / 2, -h * 0.68, w, h);
+      ctx.restore();
     }
-    ctx.save();
-    upright(b.x, b.y + 14);
-    ctx.fillStyle = '#e8e4de';
-    ctx.beginPath(); ctx.arc(0, -14, 48, Math.PI, 0); ctx.lineTo(48, 0); ctx.lineTo(-48, 0); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = '#9fd3ff';
-    circle(-16, -30, 7); ctx.fill(); circle(16, -30, 7); ctx.fill();
-    ctx.fillStyle = '#555'; ctx.fillRect(-9, -20, 18, 20);
-    ctx.restore();
     ctx.font = 'bold 15px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff';
-    label(RA.i18n.t('base'), b.x, b.y + 40);
+    const bh = baseImg.naturalWidth ? BASE_W * baseImg.naturalHeight / baseImg.naturalWidth : 0;
+    label(RA.i18n.t('base'), b.x, b.y + 14 + (bh * 0.32 + 6) / TILT);
   }
 
   function drawShip(s, now) {
