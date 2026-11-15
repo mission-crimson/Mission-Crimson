@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MISSION:CRIMSON</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div class="hud-left">
+      <div class="bar" id="bar-o2"><span class="ico">🫁</span><span class="lbl" data-i18n="res_o2"></span><div class="track"><div class="fill"></div></div><span class="val"></span></div>
+      <div class="bar" id="bar-energy"><span class="ico">⚡</span><span class="lbl" data-i18n="res_energy"></span><div class="track"><div class="fill"></div></div><span class="val"></span></div>
+      <div class="bar" id="bar-health"><span class="ico">❤️</span><span class="lbl" data-i18n="res_health"></span><div class="track"><div class="fill"></div></div><span class="val"></span></div>
+    </div>
+    <div class="hud-mid">
+      <div id="parts-count"></div>
+      <div id="alien-track"></div>
+    </div>
+    <div class="hud-right">
+      <div id="clock" title=""></div>
+      <canvas id="minimap" width="150" height="150"></canvas>
+      <div class="hud-buttons">
+        <button id="btn-scan" class="hbtn" data-i18n-title="ctrl_scan">📡 E</button>
+        <button id="btn-pause" class="hbtn" data-i18n-title="pausedTitle">⏸️</button>
+        <button id="btn-mute" class="hbtn" data-i18n-title="mute">🔊</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="storm-banner" class="hidden"></div>
+  <div id="hint" class="hidden"></div>
+  <div id="toasts"></div>
+
+  <div id="touch" class="hidden">
+    <div class="dpad">
+      <button data-dir="up">▲</button>
+      <button data-dir="left">◀</button>
+      <button data-dir="right">▶</button>
+      <button data-dir="down">▼</button>
+    </div>
+    <div class="tbtns">
+      <button id="t-run" data-i18n="t_run"></button>
+      <button id="t-scan">📡</button>
+      <button id="t-action" data-i18n="t_action"></button>
+    </div>
+  </div>
+
+  <div id="screen-title" class="screen">
+    <div class="title-art">
+      <img src="assets/start.jpg" alt="MISSION:CRIMSON">
+      <button id="btn-play" aria-label="Play"></button>
+    </div>
+  </div>
+
+  <div id="screen-start" class="screen hidden">
+    <div class="panel">
+      <h1 data-i18n="title"></h1>
+      <p class="subtitle" data-i18n="subtitle"></p>
+      <p class="story" data-i18n="story"></p>
+
+      <h3 data-i18n="chooseLevel"></h3>
+      <div class="levels">
+        <button class="lvl" data-diff="easy"><b data-i18n="lvl_easy"></b><span data-i18n="lvl_easy_d"></span></button>
+        <button class="lvl" data-diff="normal"><b data-i18n="lvl_normal"></b><span data-i18n="lvl_normal_d"></span></button>
+        <button class="lvl" data-diff="hard"><b data-i18n="lvl_hard"></b><span data-i18n="lvl_hard_d"></span></button>
+      </div>
+
+      <h3 data-i18n="controlsTitle"></h3>
+      <table class="controls">
+        <tr><td><kbd>←↑→↓</kbd> / <kbd>WASD</kbd></td><td data-i18n="ctrl_move"></td></tr>
+        <tr><td><kbd>Shift</kbd></td><td data-i18n="ctrl_run"></td></tr>
+        <tr><td><kbd>E</kbd></td><td data-i18n="ctrl_scan"></td></tr>
+        <tr><td><kbd>Space</kbd></td><td data-i18n="ctrl_action"></td></tr>
+        <tr><td><kbd data-i18n="keysAnswer"></kbd></td><td data-i18n="ctrl_answer"></td></tr>
+        <tr><td><kbd>P</kbd></td><td data-i18n="ctrl_pause"></td></tr>
+      </table>
+
+      <p id="live-status" class="live-status"></p>
+
+      <div class="start-actions">
+        <button id="btn-start" class="btn btn-big" data-i18n="start"></button>
+        <button id="btn-sources" class="btn btn-ghost" data-i18n="sources"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-end" class="screen hidden">
+    <div class="panel" id="end-panel"></div>
+  </div>
+
+  <div id="modal" class="hidden"><div class="card" id="modal-card"></div></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/data/questions.js"></script>
+  <script src="js/data/nasa.js"></script>
+  <script src="js/live.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
