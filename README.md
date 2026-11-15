@@ -1,4 +1,4 @@
-🚀 MISSION:CRIMSON
+MISSION:CRIMSON
 
 MISSION:CRIMSON is a browser-based survival game for children aged 7–12 that teaches them about Mars through gameplay. After crash-landing on Mars, the player becomes an astronaut who must find the 6 missing pieces of the spaceship, repair it and fly back to Earth.
 
